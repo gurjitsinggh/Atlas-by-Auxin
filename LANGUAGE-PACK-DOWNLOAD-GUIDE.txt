@@ -1,0 +1,25 @@
+ATLAS GLOBAL LANGUAGE PACK DOWNLOAD
+Version: 1.14.3
+
+GOAL
+Generate local, offline packs for every language in Atlas' interface-language selector. English remains the built-in default. All non-English selector languages are attempted in the same run with equal priority.
+
+SETUP
+1. In Google Cloud, enable Cloud Translation API and configure billing/quotas.
+2. Create an API key restricted to Cloud Translation API. Do not share the key with anyone or commit it to source control.
+3. Load this extension from chrome://extensions using Load unpacked, or update the existing unpacked extension folder and click Reload.
+4. Open Atlas Settings > Interface language > Language pack. Paste the key into the password field. The key is kept only in Chrome's session storage.
+5. Click Download all supported language packs and confirm the estimated work. Do not close the extension panel until the run finishes.
+6. Each completed pack is saved locally as soon as validation passes. If a network or quota error interrupts the run, fix the cause and click Download all supported language packs again; completed packs are skipped.
+7. Use Export all installed packs (.json) to save a distributable copy of all complete packs. The selected-pack export remains available too.
+
+COMPLETENESS GUARANTEE
+A language is counted as installed only when every phrase in the current frozen Atlas phrase inventory has a non-empty translation and protected tokens pass validation. Unsupported Google language codes and failed translations are reported honestly and are not marked ready. Re-run after correcting the API/model issue.
+
+BILLING AND SECURITY
+Google Cloud Translation can incur charges. This tool displays an estimate of source character volume and request count before starting; check your Cloud Billing dashboard for actual costs. Do not embed a personal API key in an extension you distribute to others. For public distribution, use a secured backend with quotas and per-user authorization.
+
+NOTES
+- A pack is cached in chrome.storage.local and used offline after installation.
+- Current interface phrases are snapshotted once for the run so all languages share identical keys. New UI strings require a new pack build.
+- The full collection JSON is for backup/deployment; it can be large.

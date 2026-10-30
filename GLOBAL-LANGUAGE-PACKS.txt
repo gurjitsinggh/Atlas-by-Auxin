@@ -1,0 +1,5 @@
+Atlas global language pack workflow
+
+All non-English languages shown in the Atlas language selector are attempted with equal priority. Completed packs are committed only after every source phrase returns a valid translation; each pack is saved immediately to allow safe resumption. The current interface phrase inventory is frozen for the duration of the run so every language shares the same keys.
+
+Some languages may not be supported by the Google Cloud Translation language catalogue or may require a different API code. Unsupported languages are reported and remain unmarked instead of being presented as complete. Google Cloud Translation billing may apply.

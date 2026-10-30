@@ -1,0 +1,431 @@
+<main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" role="presentation" focusable="false">
+          <path d="M16 3.5c-5 0-9 4-9 9 0 6.7 9 16 9 16s9-9.3 9-16c0-5-4-9-9-9Z"/>
+          <circle cx="16" cy="12.5" r="3.2"/>
+        </svg>
+      </div>
+      <div class="brand-copy">
+        <div class="brand-name">Atlas</div>
+        <div class="brand-subtitle"><span>For</span> <strong data-i18n-ignore>Auxin</strong> <span data-i18n-ignore>Studio</span> · <span>Maps Intelligence</span></div>
+      </div>
+      <div id="pageBadge" class="status-badge status-neutral"><span class="status-dot"></span><span id="pageBadgeText">Checking tab</span></div>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+        <svg class="theme-icon moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.8 8.8 0 1 0 20.2 15.1Z"/></svg>
+        <svg class="theme-icon sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6m11 11 1.6 1.6M2 12h2.2m15.6 0H22M4.9 19.1l1.6-1.6m11-11 1.6-1.6"/></svg>
+      </button>
+    </header>
+
+    <div class="advanced-mode-bar" role="group" aria-label="Advanced mode">
+      <div class="advanced-mode-copy">
+        <span class="advanced-mode-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></span>
+        <span class="advanced-mode-text"><strong>Advanced mode</strong><span>Lead workspace and data tools</span></span>
+      </div>
+      <button id="advancedModeToggle" class="advanced-mode-toggle" type="button" aria-pressed="false" aria-controls="leadWorkspaceMount" aria-label="Enable advanced mode">
+        <span id="advancedModeState">Off</span>
+        <svg class="advanced-mode-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <details id="viewSettings" class="settings-card">
+      <summary><span class="settings-summary-left"><span class="settings-gear" aria-hidden="true"><svg class="lucide lucide-settings" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.09a2 2 0 0 1 1 1.73v.51a2 2 0 0 1-1 1.73l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.73v-.51a2 2 0 0 1 1-1.73l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></span><span>Settings</span></span><span class="settings-summary-note">View options</span></summary>
+      <div class="settings-body">
+        <p class="settings-intro" data-settings-general-only>Choose which sections appear in Atlas. Your business records are kept separately.</p>
+        <div class="settings-tab-bar" role="tablist" aria-label="Settings categories">
+          <button class="settings-tab is-active" type="button" role="tab" id="settingsTabGeneral" aria-selected="true" aria-controls="viewSettingsPanel" data-settings-tab="general">General</button>
+          <button class="settings-tab" type="button" role="tab" id="settingsTabLanguage" aria-selected="false" aria-controls="viewSettingsPanel" data-settings-tab="language">Language</button>
+          <button class="settings-tab" type="button" role="tab" id="settingsTabAppearance" aria-selected="false" aria-controls="viewSettingsPanel" data-settings-tab="appearance">Appearance</button>
+        </div>
+        <section class="atlas-language-setting" data-settings-group="language" hidden aria-labelledby="atlasLanguageTitle">
+          <div class="settings-scale-heading"><strong id="atlasLanguageTitle">Interface language</strong><span>Language</span></div>
+          <label class="phone-action-label" for="interfaceLanguageSearch">Find a language</label>
+          <div class="language-search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><input id="interfaceLanguageSearch" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="languageSearchResults" aria-describedby="atlasLanguageHelp" placeholder="Search by language or native name…" autocomplete="off"></div>
+          <div id="languageSearchResults" class="language-search-results" role="listbox" aria-label="Matching languages" hidden></div>
+          <div class="animated-select language-animated-select" data-animated-select="interfaceLanguage">
+            <select id="interfaceLanguage" class="native-select-hidden" aria-hidden="true" tabindex="-1"></select>
+            <button type="button" class="animated-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select interface language" aria-controls="interfaceLanguage-menu" aria-describedby="atlasLanguageHelp"><span class="animated-select-value">English</span><svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg></button>
+            <div id="interfaceLanguage-menu" class="animated-select-menu" role="listbox" aria-label="Available languages" hidden></div>
+          </div>
+          <p id="atlasLanguageHelp" class="settings-footnote">Choose a language and download its complete translation pack from Google. The pack is saved locally for offline use.</p>
+          <div class="language-pack-manager" aria-labelledby="languagePackManagerTitle">
+            <div class="language-pack-manager-heading"><strong id="languagePackManagerTitle">Language pack</strong><span id="languagePackCoverage">Preparing phrase list…</span></div>
+            <label class="language-pack-key-label" for="translationApiKey">Google Cloud Translation API key</label>
+            <div class="language-pack-key-row">
+              <input id="translationApiKey" type="password" class="language-pack-api-key" autocomplete="off" spellcheck="false" placeholder="Paste your Google Cloud Translation API key…" aria-describedby="languagePackApiHelp">
+              <button id="toggleTranslationApiKey" class="button button-secondary language-pack-key-toggle" type="button">Show API key</button>
+            </div>
+            <p id="languagePackApiHelp" class="settings-footnote language-pack-api-help">Your API key is kept only for this browser session. Google Cloud Translation may charge for usage. <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noreferrer">Get an API key</a></p>
+            <div class="language-pack-actions">
+              <button id="downloadLanguagePackBtn" class="button button-primary" type="button">Download selected language pack</button>
+              <button id="exportLanguagePackBtn" class="button button-secondary" type="button" disabled>Export language pack</button>
+              <button id="removeLanguagePackBtn" class="button button-secondary" type="button" disabled>Remove downloaded pack</button>
+            </div>
+            <button id="downloadAllLanguagePacksBtn" class="button button-secondary language-pack-all-button" type="button">Download all supported language packs</button>
+            <button id="exportAllLanguagePacksBtn" class="button button-secondary language-pack-all-button" type="button">Export all installed packs (.json)</button>
+            <p class="settings-footnote language-pack-all-help">Processes every language in the selector with equal priority. Complete packs are saved as they finish, so the run can be resumed. Google Cloud billing may apply.</p>
+            <div class="language-pack-progress-wrap" id="languagePackProgressWrap" hidden>
+              <div class="language-pack-progress-track"><span id="languagePackProgressBar"></span></div>
+              <div class="language-pack-progress-meta"><span id="languagePackProgressText" role="status" aria-live="polite">Preparing language pack…</span><span id="languagePackProgressCount">0 / 0</span></div>
+            </div>
+            <p id="languagePackStatus" class="language-pack-status" role="status" aria-live="polite">No language pack downloaded</p>
+          </div>
+        </section>
+        <div class="settings-divider"></div>
+        <section class="settings-scale-section" aria-labelledby="interfaceScaleTitle">
+          <div class="settings-scale-heading"><strong id="interfaceScaleTitle">Interface scaling</strong><span>Personalize</span></div>
+          <p class="settings-scale-help">Tune headings, supporting text, and control spacing separately. Changes apply immediately and are saved automatically.</p>
+          <label class="settings-scale-control" for="headingScale">
+            <span class="settings-scale-label"><span>Header & section titles</span><output id="headingScaleValue" for="headingScale">100%</output></span>
+            <input class="settings-scale-range" id="headingScale" type="range" min="85" max="130" step="1" value="100">
+          </label>
+          <label class="settings-scale-control" for="textScale">
+            <span class="settings-scale-label"><span>Supporting & body text</span><output id="textScaleValue" for="textScale">100%</output></span>
+            <input class="settings-scale-range" id="textScale" type="range" min="85" max="130" step="1" value="100">
+          </label>
+          <label class="settings-scale-control" for="controlScale">
+            <span class="settings-scale-label"><span>Controls & spacing</span><output id="controlScaleValue" for="controlScale">100%</output></span>
+            <input class="settings-scale-range" id="controlScale" type="range" min="85" max="120" step="1" value="100">
+          </label>
+          <label class="settings-scale-control" for="cardSpacingScale">
+            <span class="settings-scale-label"><span>Spacing between cards</span><output id="cardSpacingScaleValue" for="cardSpacingScale">10 px</output></span>
+            <input class="settings-scale-range" id="cardSpacingScale" type="range" min="4" max="24" step="1" value="10" aria-label="Spacing between cards in pixels">
+          </label>
+          <div class="settings-scale-actions">
+            <span class="settings-scale-reset-note">Restore default sizing and spacing</span>
+            <button id="resetInterfaceScaleBtn" class="settings-scale-reset" type="button" title="Reset interface scaling and card spacing to defaults">Reset</button>
+          </div>
+        </section>
+        <div class="settings-divider"></div>
+        <section class="theme-preset-setting" data-settings-group="appearance" hidden aria-labelledby="themePresetTitle">
+          <div class="settings-scale-heading"><strong id="themePresetTitle">Colour theme</strong><span>Appearance</span></div>
+          <label class="phone-action-label" for="themePreset">Choose your Atlas palette</label>
+          <div class="animated-select theme-preset-animated-select" data-animated-select="themePreset">
+            <select id="themePreset" class="native-select-hidden" aria-hidden="true" tabindex="-1">
+              <option value="classic-light">Classic Light</option>
+              <option value="classic-dark">Classic Dark</option>
+              <option value="orchard-glow">Orchard Glow</option>
+              <option value="custom-theme">Custom Theme</option>
+            </select>
+            <button type="button" class="animated-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose Atlas colour theme" aria-controls="themePreset-menu">
+              <span class="animated-select-value">Classic Light</span>
+              <svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+            <div id="themePreset-menu" class="animated-select-menu" role="listbox" aria-label="Atlas colour themes" hidden></div>
+          </div>
+          <p class="settings-footnote">One balanced palette combining Lime Green, Forest Green, Soft Ivory, and Jet Black.</p>
+          <div class="custom-theme-studio" aria-labelledby="customThemeTitle">
+            <div class="custom-theme-studio-heading"><strong id="customThemeTitle">Create a theme</strong><span>Custom palette</span></div>
+            <label class="custom-theme-name-label" for="customThemeName">Theme name</label>
+            <input id="customThemeName" class="custom-theme-name" type="text" maxlength="32" value="My Atlas Theme" placeholder="e.g. Midnight Studio">
+            <div class="custom-theme-colors" id="customThemeColors">
+              <div class="theme-color-field"><span class="theme-color-label">Background</span><span class="theme-color-inputs"><input id="themeColorBackground" class="theme-color-native" type="color" value="#F5F8F5" aria-label="Background color picker"><input id="themeColorBackgroundCode" class="theme-color-code" type="text" value="#F5F8F5" spellcheck="false" autocomplete="off" aria-label="Background color code" placeholder="#HEX, rgb(), or hsl()"></span></div>
+              <div class="theme-color-field"><span class="theme-color-label">Cards and fields</span><span class="theme-color-inputs"><input id="themeColorSurface" class="theme-color-native" type="color" value="#FFFFFF" aria-label="Cards and fields color picker"><input id="themeColorSurfaceCode" class="theme-color-code" type="text" value="#FFFFFF" spellcheck="false" autocomplete="off" aria-label="Cards and fields color code" placeholder="#HEX, rgb(), or hsl()"></span></div>
+              <div class="theme-color-field"><span class="theme-color-label">Primary actions</span><span class="theme-color-inputs"><input id="themeColorPrimary" class="theme-color-native" type="color" value="#18724E" aria-label="Primary action color picker"><input id="themeColorPrimaryCode" class="theme-color-code" type="text" value="#18724E" spellcheck="false" autocomplete="off" aria-label="Primary action color code" placeholder="#HEX, rgb(), or hsl()"></span></div>
+              <div class="theme-color-field"><span class="theme-color-label">Accent and highlights</span><span class="theme-color-inputs"><input id="themeColorAccent" class="theme-color-native" type="color" value="#BCEBD0" aria-label="Accent color picker"><input id="themeColorAccentCode" class="theme-color-code" type="text" value="#BCEBD0" spellcheck="false" autocomplete="off" aria-label="Accent color code" placeholder="#HEX, rgb(), or hsl()"></span></div>
+              <div class="theme-color-field"><span class="theme-color-label">Text</span><span class="theme-color-inputs"><input id="themeColorText" class="theme-color-native" type="color" value="#12251B" aria-label="Text color picker"><input id="themeColorTextCode" class="theme-color-code" type="text" value="#12251B" spellcheck="false" autocomplete="off" aria-label="Text color code" placeholder="#HEX, rgb(), or hsl()"></span></div>
+            </div>
+            <div class="custom-theme-preview" id="customThemePreview" aria-label="Live custom theme preview"><span class="custom-theme-preview-chip">Aa</span><span class="custom-theme-preview-copy"><strong>Atlas preview</strong><small>Cards, text and actions</small></span><span class="custom-theme-preview-action">Action</span></div>
+            <p class="custom-theme-error" id="customThemeError" role="status" aria-live="polite" hidden></p>
+            <div class="custom-theme-actions"><button id="applyCustomThemeBtn" class="button button-primary" type="button">Apply and save theme</button><button id="resetCustomThemeBtn" class="button button-secondary" type="button">Reset colors</button></div>
+            <div class="theme-library-toolbar">
+              <button id="keepCustomThemeBtn" class="button button-secondary" type="button">Keep theme</button>
+              <button id="toggleDeletedThemesBtn" class="button button-secondary" type="button" aria-expanded="false" aria-controls="deletedThemeLibrary">Deleted themes <span id="deletedThemeCount" class="theme-count">0</span></button>
+            </div>
+            <section class="theme-library" aria-labelledby="savedThemeLibraryTitle">
+              <div class="theme-library-heading"><strong id="savedThemeLibraryTitle">Saved themes</strong><span>Available next time you open Atlas</span></div>
+              <div id="savedThemeList" class="theme-library-list"><p class="theme-library-empty">No custom themes saved yet.</p></div>
+            </section>
+            <section id="deletedThemeLibrary" class="theme-library theme-library-deleted" aria-labelledby="deletedThemeLibraryTitle" hidden>
+              <div class="theme-library-heading"><strong id="deletedThemeLibraryTitle">Recently deleted</strong><button id="restoreAllDeletedThemesBtn" class="theme-library-inline-action" type="button">Restore all</button></div>
+              <div id="deletedThemeList" class="theme-library-list"><p class="theme-library-empty">No deleted themes.</p></div>
+            </section>
+            <p class="settings-footnote">Color fields accept HEX, RGB, and HSL notation. The color swatch stays available for quick visual selection. Saved custom themes can be edited, applied, deleted, or restored later.</p>
+          </div>
+        </section>
+        <div class="settings-divider"></div>
+        <section class="undo-history-setting" aria-labelledby="undoHistoryTitle">
+          <label for="undoHistoryLimit" id="undoHistoryTitle">Undo history snapshots</label>
+          <div class="undo-history-row"><input id="undoHistoryLimit" class="settings-scale-range" type="range" min="1" max="50" step="1" value="10"><output id="undoHistoryLimitValue" for="undoHistoryLimit">10 saved</output></div>
+          <p class="settings-footnote">Keep this many previous column selections across extension sessions. Use Ctrl+Z or the Undo button to restore one.</p>
+        </section>
+        <div class="settings-divider"></div>
+        <section class="phone-action-settings" aria-labelledby="phoneActionTitle">
+          <div class="settings-scale-heading"><strong id="phoneActionTitle">Phone number clicks</strong><span>Contacts</span></div>
+          <label class="phone-action-label" for="phoneClickAction">When you click a phone number</label>
+          <div class="animated-select phone-action-animated-select" data-animated-select="phoneClickAction">
+            <select id="phoneClickAction" class="native-select-hidden" aria-hidden="true" tabindex="-1">
+              <option value="auto">Auto-detect (WhatsApp or copy)</option>
+              <option value="whatsapp">Always open WhatsApp</option>
+              <option value="clipboard">Always copy to clipboard</option>
+            </select>
+            <button type="button" class="animated-select-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="When you click a phone number" aria-controls="phoneClickAction-menu">
+              <span class="animated-select-value">Auto-detect (WhatsApp or copy)</span>
+              <svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+            <div id="phoneClickAction-menu" class="animated-select-menu" role="listbox" aria-label="Phone number click behavior" hidden></div>
+          </div>
+          <p class="settings-footnote phone-action-note">Auto-detect opens WhatsApp for a valid number with an explicit international prefix (+ or 00). Other formats are copied exactly as displayed, avoiding an incorrect country-code guess.</p>
+        </section>
+        <div class="settings-divider"></div>
+        <label class="setting-option"><input type="checkbox" data-view-option="showHero" checked><span>Show introduction</span></label>
+        <label class="setting-option"><input type="checkbox" data-view-option="showSearch" checked><span>Show Build a search</span></label>
+        <label class="setting-option"><input type="checkbox" data-view-option="showPreview" checked><span>Show latest saved records</span></label>
+        <label class="setting-option"><input type="checkbox" data-view-option="showExport" checked><span>Show export dataset</span></label>
+        <div class="settings-divider"></div>
+        <label class="setting-option"><input id="autoMapsSearchSync" type="checkbox" checked><span>Automatically sync search with Google Maps</span></label>
+        <p class="settings-footnote">When disabled, Search in current tab updates the active Google Maps tab without opening a new tab.</p>
+        <div class="settings-divider"></div>
+        <label class="setting-option"><input id="resetSearchOnPanelClose" type="checkbox"><span>Clear search fields when Atlas closes</span></label>
+        <p class="settings-footnote">Only search fields reset on close. Your saved leads, selected columns and export format remain saved.</p>
+        <div class="settings-divider"></div>
+        <label class="setting-option"><input id="strongBordersToggle" type="checkbox"><span>Stronger section borders</span></label>
+        <p class="settings-footnote">Adds more contrast between cards, fields and export controls.</p>
+      </div>
+    </details>
+
+    <section class="hero" data-view-section="showHero">
+      <h1>Map the market.<br><span>Keep momentum.</span></h1>
+      <p><strong data-i18n-ignore>Auxin</strong> <span data-i18n-ignore>Studio</span>. <span>Collect public listing details, keep your dataset organized, and export it in the format your workflow needs.</span></p>
+    </section>
+
+    <section class="search-card" data-view-section="showSearch" aria-label="Open a Google Maps search">
+      <div class="card-label-row"><span class="section-number">01</span><label for="queryInput">Build a search</label></div>
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg>
+        <input id="queryInput" type="text" placeholder="e.g. dental clinics" autocomplete="off">
+      </div>
+      <label for="locationInput" class="second-label">Location</label>
+      <div class="input-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10.2c0 5.1-7 10.4-7 10.4S5 15.3 5 10.2a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg>
+        <input id="locationInput" type="text" placeholder="e.g. Mohali, India" autocomplete="off">
+      </div>
+      <button id="openMapsBtn" class="button button-secondary full-width">
+        <span>Open Maps search</span><span class="button-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </button>
+      <button id="manualMapsSyncBtn" class="button button-secondary full-width manual-maps-sync-btn hidden" type="button" hidden>
+        <span>Update Maps search</span><span class="button-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+      </button>
+      <div id="mapsSyncNote" class="sidepanel-note"><span class="note-icon">i</span><span>Automatic search sync is enabled. Atlas and Google Maps searches stay synchronized while Atlas remains open in the side panel.</span></div>
+    </section>
+
+    <section class="collect-card" aria-label="Collect results from current tab">
+      <div class="section-heading">
+        <div class="card-label-row heading-label-row"><span class="section-number">02</span><h2>Current Maps results</h2></div>
+        <div class="count-chip"><span id="recordCount">0</span><span>saved</span></div>
+      </div>
+      <div class="limit-row">
+        <label for="limitSelectTrigger">Listings to collect</label>
+        <div class="animated-select limit-animated-select" data-animated-select="limitSelect">
+        <select id="limitSelect" class="native-select-hidden" aria-hidden="true" tabindex="-1">
+          <option value="unlimited" selected>Unlimited · until end of list</option>
+          <option value="25">25 listings</option>
+          <option value="50">50 listings</option>
+          <option value="100">100 listings</option>
+          <option value="200">200 listings</option>
+        </select>
+        <button id="limitSelectTrigger" class="animated-select-trigger limit-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Listings to collect" aria-controls="limitSelectMenu">
+          <span class="animated-select-value">Unlimited · until end of list</span>
+          <svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg>
+        </button>
+        <div id="limitSelectMenu" class="animated-select-menu" role="listbox" aria-label="Listings to collect" hidden></div>
+        </div>
+      </div>
+      <button id="scanBtn" class="button button-primary full-width" disabled>
+        <span class="play-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span><span id="scanBtnText">Start scan</span>
+      </button>
+      <div class="collect-reset-row">
+        <button id="clearBtn" class="button button-reset full-width" title="Reset all saved results" aria-label="Reset all saved results">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11a8.5 8.5 0 1 1 2.3 6M3.5 4.5V11h6.5"/></svg><span>Reset data</span>
+        </button>
+      </div>
+      <button id="phoneBtn" class="button button-phone full-width" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5h2.6l1.3 4-2 1.6a13.6 13.6 0 0 0 5.8 5.8l1.6-2 4 1.3v2.6c0 1.1-.9 2-2 2A15 15 0 0 1 5.2 5.5c0-1.1.9-2 2-2Z"/></svg>
+        <span id="phoneBtnText">Find missing phone numbers</span>
+      </button>
+      <div class="phone-lookup-note">Phone lookup checks public details on business profiles.</div>
+      <div id="scanControlRow" class="scan-control-row hidden">
+        <button id="pauseBtn" class="button button-pause" type="button" hidden>Pause scan</button>
+        <button id="resumeBtn" class="button button-resume" type="button" hidden>Resume scan</button>
+        <button id="stopBtn" class="button button-stop" type="button">Stop scan</button>
+      </div>
+      <div class="progress-track" aria-label="Collection progress"><div id="progressBar" class="progress-bar"></div></div>
+      <div id="statusText" class="status-text" role="status" aria-live="polite">Ready when you are.</div>
+
+      <div id="scanActivity" class="scan-activity hidden" aria-live="polite">
+        <div class="scanner-icon" aria-hidden="true"><span class="scanner-ring ring-one"></span><span class="scanner-ring ring-two"></span><span class="scanner-core"></span></div>
+        <div class="activity-copy"><strong id="activityTitle">Reading visible listings<span class="loading-dots"><i></i><i></i><i></i></span></strong><span id="activitySubtitle">Separating business details from actions</span></div>
+        <div class="elapsed-chip"><span id="elapsedTime">0</span><small>sec</small></div>
+      </div>
+
+      <div class="scan-note"><span class="note-icon">i</span><span>Only business-card details are collected. “Order online”, “Reserve a table” and service chips are ignored.</span></div>
+    </section>
+
+    <section class="preview-card" data-view-section="showPreview" aria-label="Latest saved records">
+      <div class="section-heading preview-heading">
+        <div class="card-label-row heading-label-row"><span class="section-number">03</span><h2>Latest saved records</h2></div>
+        <span id="previewMeta" class="preview-meta">Autosaved</span>
+      </div>
+      <div class="preview-search-row">
+        <label class="sr-only" for="previewSearchInput">Search all saved leads</label>
+        <div class="preview-search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg>
+          <input id="previewSearchInput" type="search" autocomplete="off" spellcheck="false" placeholder="Search all saved leads…" aria-label="Search all saved leads by business, phone, or category">
+          <button id="previewSearchClear" type="button" aria-label="Clear saved leads search" title="Clear search" hidden>×</button>
+        </div>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="All saved leads. Scroll to view more records.">
+        <table class="records-table">
+          <thead><tr><th scope="col">Business</th><th scope="col">Phone</th><th scope="col">Category</th></tr></thead>
+          <tbody id="previewRows"><tr><td colspan="3" class="empty-cell">Your results will appear here.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="table-footnote">Records stay saved locally. Choose the columns you need for each export.</div>
+    </section>
+
+    <section id="leadWorkspaceMount" class="lead-workspace-host" aria-label="Lead management and data quality" hidden></section>
+
+    <section class="export-card" data-view-section="showExport" aria-label="Export data">
+      <div class="section-heading export-heading">
+        <div class="card-label-row heading-label-row"><span class="section-number">05</span><h2>Export your dataset</h2></div>
+        <span class="format-count">4 formats</span>
+      </div>
+      <label for="exportFormatTrigger" class="export-format-label">File format</label>
+      <div class="animated-select export-select" data-animated-select="exportFormat">
+      <select id="exportFormat" class="native-select-hidden" aria-hidden="true" tabindex="-1">
+        <option value="xlsx">Excel workbook (.xlsx)</option>
+        <option value="csv" selected>Comma-separated values (.csv)</option>
+        <option value="json">JSON data (.json)</option>
+        <option value="tsv">Tab-separated values (.tsv)</option>
+      </select>
+      <button id="exportFormatTrigger" class="animated-select-trigger export-format-select" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="File format" aria-controls="exportFormatMenu">
+        <span class="animated-select-value">Comma-separated values (.csv)</span>
+        <svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg>
+      </button>
+      <div id="exportFormatMenu" class="animated-select-menu" role="listbox" aria-label="File format" hidden></div>
+      </div>
+      <div class="filename-preview" aria-label="Export filename editor"><span class="filename-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span><input id="filenameInput" class="filename-input" type="text" aria-label="Export filename. Edit to use a custom name." spellcheck="false" autocomplete="off" value="Atlas Export.csv"><span id="filenameModeLabel" class="auto-label">Auto-named</span></div>
+      <p class="filename-help">You can also edit this name manually.</p>
+      <details class="columns-picker" open>
+        <summary><span>Columns to include</span><span id="columnCount" class="column-count">11 selected</span></summary>
+        <div class="columns-content">
+          <div class="column-grid" id="columnGrid">
+            <label class="column-option"><input type="checkbox" data-export-column value="name" checked><span>Business name</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="phone" checked><span>Phone number</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="email"><span>Email address</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="address" checked><span>Address</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="category" checked><span>Category</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="website" checked><span>Website</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="rating" checked><span>Rating</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="reviews" checked><span>Review count</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="priceRange" checked><span>Price range</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="hours" checked><span>Opening hours</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="description" checked><span>Description</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="mapsUrl" checked><span>Google Maps URL</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="phoneLookupStatus"><span>Phone lookup status</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="phoneCheckedAt"><span>Phone checked time</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="collectedAt"><span>Collected time</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="leadStatus"><span>Lead status</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="leadTags"><span>Lead tags</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="leadNotes"><span>Lead notes</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="leadPriority"><span>Lead priority</span></label>
+            <label class="column-option"><input type="checkbox" data-export-column value="followUpDate"><span>Follow-up date</span></label>
+          </div>
+          <div class="column-actions" aria-label="Quick column presets">
+            <button id="selectAllColumnsBtn" type="button">All columns</button>
+            <button id="recommendedColumnsBtn" type="button">Recommended</button>
+            <button id="coreColumnsBtn" type="button">Core</button>
+            <button id="contactColumnsBtn" type="button">Contact</button>
+          </div>
+
+        </div>
+      </details>
+      <div class="undo-row">
+        <button id="undoColumnsBtn" class="button button-undo" type="button" disabled title="Restore the previous column selection (Ctrl+Z)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h9a7 7 0 0 1 0 14h-2"/></svg><span>Undo</span>
+        </button>
+        <button id="redoColumnsBtn" class="button button-redo" type="button" disabled title="Reapply the next column selection (Ctrl+Y)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 14 5-5-5-5"/><path d="M20 9h-9a7 7 0 0 0 0 14h2"/></svg><span>Redo</span>
+        </button>
+      </div>
+      <div class="export-row">
+        <button id="exportBtn" class="button button-export" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4"/><path d="M5 16v4h14v-4"/></svg>
+          <span>Export dataset</span><span id="exportCount" class="export-count">0</span>
+        </button>
+
+      </div>
+      <div class="export-hint">The filename follows your business type and location. Excel exports include clean headers, sensible column widths, and filters.</div>
+    </section>
+
+
+    <section class="presets-card" aria-label="Saved column presets">
+      <div class="section-heading presets-heading">
+        <div class="card-label-row heading-label-row"><span class="section-number">06</span><h2>Saved column presets</h2></div>
+        <span class="preset-card-note">Reusable columns</span>
+      </div>
+      <p class="presets-intro">Choose a built-in preset or save your own column selection for future exports.</p>
+      <label class="preset-search-label" for="columnPresetSearch">Find a preset</label>
+      <div class="preset-search-wrap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/></svg><input id="columnPresetSearch" type="search" placeholder="Search built-in and saved presets…" autocomplete="off" aria-controls="presetChipList"></div>
+      <div id="presetChipList" class="preset-chip-list" aria-label="Built-in and saved presets"></div>
+      <div class="custom-column-presets" aria-label="Custom column presets">
+            <label class="preset-field-label" for="savedColumnPresetSelect">Your saved presets</label>
+            <div class="preset-load-row">
+              <div class="animated-select preset-animated-select" data-animated-select="savedColumnPreset">
+                <select id="savedColumnPresetSelect" class="native-select-hidden" aria-hidden="true" tabindex="-1" aria-label="Choose a saved column preset">
+                  <option value="">Choose a saved preset</option>
+                </select>
+                <button id="savedColumnPresetTrigger" class="animated-select-trigger preset-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose a saved column preset" aria-controls="savedColumnPresetMenu">
+                  <span class="animated-select-value">Choose a saved preset</span>
+                  <svg class="animated-select-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 10 5 5 5-5"/></svg>
+                </button>
+                <div id="savedColumnPresetMenu" class="animated-select-menu" role="listbox" aria-label="Choose a saved column preset" hidden></div>
+              </div>
+              <button id="deleteColumnPresetBtn" type="button" disabled>Delete</button>
+            </div>
+            <label class="preset-field-label" for="columnPresetName">Save current selection as</label>
+            <div class="preset-save-row">
+              <input id="columnPresetName" type="text" maxlength="40" placeholder="Enter a preset name" autocomplete="off" aria-label="Name for this column preset">
+              <button id="saveColumnPresetBtn" type="button">Save preset</button>
+            </div>
+            <p class="preset-help">Select the columns you need above, give the selection a name, and save it for next time.</p>
+          </div>
+    </section>
+
+    <footer class="footer"><span class="privacy-dot"></span><span>Stored locally in this browser.</span><a href="privacy.html" target="_blank">Privacy</a></footer>
+    <div class="engineered-by">Engineered by <strong>Gurjit Singh</strong></div>
+    <div id="toast" class="toast hidden" role="status" aria-live="polite" aria-atomic="true">
+      <span class="toast-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.4 4.2L19 6.8"/></svg></span>
+      <div class="toast-copy"><strong id="toastTitle">Atlas</strong><span id="toastMessage" class="toast-message"></span></div>
+      <button id="toastClose" class="toast-close" type="button" aria-label="Close notification" title="Close notification"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="datasetChoiceOverlay" class="dataset-choice-overlay hidden" aria-hidden="true">
+      <section id="datasetChoiceDialog" class="dataset-choice-dialog" role="dialog" aria-modal="true" aria-labelledby="datasetChoiceTitle" aria-describedby="datasetChoiceMessage">
+        <div class="dataset-choice-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 8v4m0 4h.01M10.3 3.6 2.4 17.2a1.5 1.5 0 0 0 1.3 2.2h16.6a1.5 1.5 0 0 0 1.3-2.2L13.7 3.6a1.9 1.9 0 0 0-3.4 0Z"/></svg></div>
+        <h2 id="datasetChoiceTitle">A different search was detected</h2>
+        <p id="datasetChoiceMessage" class="dataset-choice-message"></p>
+        <div class="dataset-search-comparison">
+          <div><span>Previous data</span><strong id="datasetPreviousLabel">Saved listings</strong></div>
+          <div><span>New search</span><strong id="datasetNextLabel">Current search</strong></div>
+        </div>
+        <p class="dataset-choice-help">Add keeps your existing records and appends new businesses. Reset clears the old records before this scan starts.</p>
+        <div class="dataset-choice-actions">
+          <button id="datasetAppendBtn" class="button button-primary full-width" type="button">Add to existing data</button>
+          <button id="datasetResetBtn" class="button button-reset full-width" type="button">Reset previous data</button>
+          <button id="datasetCancelBtn" class="dataset-choice-cancel" type="button">Cancel</button>
+        </div>
+      </section>
+    </div>
+    <div id="completionOverlay" class="completion-overlay hidden" aria-hidden="true">
+      <section id="completionDialog" class="completion-dialog" role="dialog" aria-modal="true" aria-labelledby="completionTitle" aria-describedby="completionMessage">
+        <button id="completionCloseIcon" class="completion-close-icon" type="button" aria-label="Close completion notification" title="Close notification">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+        <div class="completion-mark" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m5 12.5 4.4 4.2L19 6.8"/></svg></div>
+        <h2 id="completionTitle">Scraping complete</h2>
+        <p id="completionMessage" class="completion-message"></p>
+        <div class="completion-accent" aria-hidden="true"><span></span></div>
+        <button id="completionCloseBtn" class="button button-primary completion-dismiss" type="button">Close notification</button>
+      </section>
+    </div>
+  </main>
